@@ -1,0 +1,25 @@
+<div class="shop-area__sorts-area">
+  <div class="shop-area__sorts">
+    <div class="shop-area__sort-by">
+      <span>Sort By</span>
+      <select
+        (change)="setSelectOption($event, 'order')"
+        class="shop-area__select controls"
+      >
+        <option value="asc">Price: Low to High</option>
+        <option value="desc">Price: High to Low</option>
+      </select>
+    </div>
+    <div class="shop-area__show">
+      <span>Sort By</span>
+      <select
+        (change)="setSelectOption($event, 'pageSize')"
+        class="shop-area__select controls"
+      >
+        <option value="6">6</option>
+        <option value="12">12</option>
+        <option value="18">18</option>
+      </select>
+    </div>
+  </div>
+</div>

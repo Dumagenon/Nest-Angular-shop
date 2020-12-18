@@ -1,0 +1,49 @@
+<div  id="shop-area__catalog">
+  <ul class="shop-area__list">
+    <li *ngFor="let prod of (products$ | async)" class="shop-area__item">
+      <div>
+        <a href="#">
+          <img class="shop-area__item-img"
+               src="{{prod.img}}" alt="{{prod.name}}"
+          >
+        </a>
+        <div class="shop-area__text-info">
+          <a href="#" class="shop-area__item-name">
+            <span>{{prod.name}}</span>
+          </a>
+          <p class="shop-area__item-brand">{{prod.brand}}</p>
+        </div>
+      </div>
+      <div class="shop-area__buy" >
+        <div class="shop-area__cart-area">
+<!--          <ng-container *ngTemplateOutlet="getPriceTemplate(); context: {prod: prod}" ></ng-container>-->
+          <button class="shop-area__item-btn">Add to card</button>
+        </div>
+        <span class="shop-area__availability"
+          [class.availability-true]="prod.amount > 0"
+        >
+          {{ prod.amount > 0 ? 'Available' : 'Not Available' }}
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #ifPrice let-prod="prod">
+  <span *ngIf="isNumber(prod.price); else elsePrice" class="shop-area__item-price">
+    $<span >{{(prod.price).toFixed(2)}}</span>
+  </span>
+</ng-template>
+
+<ng-template #elsePrice let-prod="prod">
+  <div>
+    <span class="old-price">
+      ${{(prod.price.oldPrice).toFixed(2)}}
+    </span>
+    <span class="shop-area__item-price new-price" >
+      <span>
+        ${{(prod.price.newPrice).toFixed(2)}}
+      </span>
+    </span>
+  </div>
+</ng-template>
