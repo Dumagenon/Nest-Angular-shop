@@ -17,6 +17,8 @@
 .shop-area__sorts {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .shop-area__sort-by {

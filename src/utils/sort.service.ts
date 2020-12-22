@@ -6,8 +6,8 @@ export class Sort {
   }
 
   private static sortByPrice(a: Product, b: Product, order) {
-    const priceA = typeof a.price === 'object' ? a.price.newPrice : a.price;
-    const priceB = typeof b.price === 'object' ? b.price.newPrice : b.price;
+    const priceA = a.price.newPrice ? a.price.newPrice : a.price.oldPrice;
+    const priceB = b.price.newPrice ? b.price.newPrice : b.price.oldPrice;
     return order === 'desc' ? priceB - priceA : priceA - priceB;
   }
 }

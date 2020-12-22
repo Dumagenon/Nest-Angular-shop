@@ -2,13 +2,13 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import * as DB from '../products.json';
 import { Product, ProductsResponse } from '../interfaces/product.interface';
 import * as fs from 'fs';
-// import { Sort } from 'src/utils/sort.service';
+import { Sort } from 'src/utils/sort.service';
 
 @Injectable()
 export class ProductsService {
   getProducts(query: any): ProductsResponse {
-    // const items = Sort.apply(DB, query.order);
-    return { items: DB.slice(0, query.pageSize), total: DB.length };
+    const items = Sort.apply(DB, query.order);
+    return { items: items.slice(0, query.pageSize), total: DB.length };
   }
 
   getProductBySku(sku: string): Product {

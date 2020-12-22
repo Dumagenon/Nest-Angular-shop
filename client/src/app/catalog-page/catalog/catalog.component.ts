@@ -16,10 +16,13 @@ import { ProductPrice } from '../../../../../src/interfaces/product.interface';
 export class CatalogComponent {
   @Input() products$: any;
 
-  // @ViewChild('elsePrice', { static: true })
-  // public elsePrice: TemplateRef<any>;
+  @ViewChild('salePrice', { static: true })
+  public salePrice: TemplateRef<any>;
 
-  isNumber(price: number | ProductPrice): boolean {
-    return typeof price === 'number';
+  @ViewChild('cost', { static: true })
+  public cost: TemplateRef<any>;
+
+  getPriceTemplate(price: ProductPrice) {
+    return price.newPrice ? this.salePrice : this.cost;
   }
 }

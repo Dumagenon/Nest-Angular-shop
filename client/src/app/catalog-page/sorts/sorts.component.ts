@@ -1,8 +1,4 @@
-import {
-  Component,
-  DoCheck,
-  Input, OnChanges,
-} from '@angular/core';
+import { Component, DoCheck, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-sorts',
@@ -11,4 +7,15 @@ import {
 })
 export class SortsComponent {
   @Input() setSelectOption: any;
+
+  sorts: any = [
+    { value: 8, label: '8' },
+    { value: 12, label: '12' },
+    { value: 16, label: '16' },
+  ];
+
+  orders: any = [
+    { value: 'asc', label: 'Price: Low to High' },
+    { value: 'desc', label: 'Price: High to Low' },
+  ];
 }

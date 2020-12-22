@@ -6,19 +6,20 @@
         (change)="setSelectOption($event, 'order')"
         class="shop-area__select controls"
       >
-        <option value="asc">Price: Low to High</option>
-        <option value="desc">Price: High to Low</option>
+        <option *ngFor="let order of orders" value="{{order.value}}">
+          {{ order.label }}
+        </option>
       </select>
     </div>
     <div class="shop-area__show">
-      <span>Sort By</span>
+      <span>Per page</span>
       <select
         (change)="setSelectOption($event, 'pageSize')"
         class="shop-area__select controls"
       >
-        <option value="6">6</option>
-        <option value="12">12</option>
-        <option value="18">18</option>
+        <option *ngFor="let sort of sorts" value="{{ sort.value }}">
+          {{ sort.label }}
+        </option>
       </select>
     </div>
   </div>

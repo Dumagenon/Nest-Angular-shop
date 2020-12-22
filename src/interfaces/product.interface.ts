@@ -3,8 +3,8 @@ import { ApiProperty } from '@nestjs/swagger';
 export class ProductPrice {
   @ApiProperty()
   oldPrice: number;
-  @ApiProperty()
-  newPrice: number;
+  @ApiProperty({ required: false })
+  newPrice?: number;
 }
 
 export class Product {
@@ -17,7 +17,7 @@ export class Product {
   @ApiProperty()
   img: string;
   @ApiProperty()
-  price: number | ProductPrice;
+  price: ProductPrice;
   @ApiProperty()
   amount: number;
 }

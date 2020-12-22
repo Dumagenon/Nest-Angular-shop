@@ -1,6 +1,6 @@
 export interface ProductPrice {
   oldPrice: number;
-  newPrice: number;
+  newPrice?: number;
 }
 
 export interface Product {
@@ -8,7 +8,7 @@ export interface Product {
   name: string;
   brand: string;
   img: string;
-  price: number | ProductPrice;
+  price: ProductPrice;
   amount: number;
 }
 

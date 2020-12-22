@@ -16,7 +16,7 @@
       </div>
       <div class="shop-area__buy" >
         <div class="shop-area__cart-area">
-<!--          <ng-container *ngTemplateOutlet="getPriceTemplate(); context: {prod: prod}" ></ng-container>-->
+          <ng-container *ngTemplateOutlet="getPriceTemplate(prod.price); context: {prod: prod}" ></ng-container>
           <button class="shop-area__item-btn">Add to card</button>
         </div>
         <span class="shop-area__availability"
@@ -29,13 +29,13 @@
   </ul>
 </div>
 
-<ng-template #ifPrice let-prod="prod">
-  <span *ngIf="isNumber(prod.price); else elsePrice" class="shop-area__item-price">
-    $<span >{{(prod.price).toFixed(2)}}</span>
+<ng-template #cost let-prod="prod">
+  <span class="shop-area__item-price">
+    $<span >{{(prod.price.oldPrice).toFixed(2)}}</span>
   </span>
 </ng-template>
 
-<ng-template #elsePrice let-prod="prod">
+<ng-template #salePrice let-prod="prod">
   <div>
     <span class="old-price">
       ${{(prod.price.oldPrice).toFixed(2)}}
