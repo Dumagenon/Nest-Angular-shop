@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Product } from '../../../../src/interfaces/product.interface';
 import { ProductsService } from '../services/products.service';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { CatalogStateModel } from '../models/catalog-state.model';
 import { selectProducts } from '../reducers/catalog/catalog.selector';
 import { SetOrder, SetPageSize } from '../actions/catalog.action';
+import { Product } from '../models/product.models';
 
 @Component({
   selector: 'app-catalog-page',

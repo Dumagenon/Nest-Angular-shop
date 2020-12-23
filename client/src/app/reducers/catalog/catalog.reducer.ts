@@ -6,7 +6,7 @@ export const catalogNode = 'catalog';
 const initialState: CatalogStateModel = {
   products: [],
   order: 'asc',
-  pageSize: '6',
+  pageSize: '8',
   total: 0,
 };
 

@@ -1,9 +1,9 @@
 [
   {
     "sku": "el1",
-    "name": "Electric Planer Brandix KL370090G 300 Watts",
+    "title": "Electric Planer Brandix KL370090G 300 Watts",
     "brand": "Brandix",
-    "img": "assets/images/products/product-1.jpg",
+    "image": "assets/images/products/product-1.jpg",
     "price": {
       "oldPrice": 749
     },
@@ -11,9 +11,9 @@
   },
   {
     "sku": "el2",
-    "name": "Undefined Tool Zosch DPS3000SY 2700 Watts",
+    "title": "Undefined Tool Zosch DPS3000SY 2700 Watts",
     "brand": "Zosch",
-    "img": "assets/images/products/product-2.jpg",
+    "image": "assets/images/products/product-2.jpg",
     "price": {
       "oldPrice": 1019
     },
@@ -21,9 +21,9 @@
   },
   {
     "sku": "el3",
-    "name": "Drill Screwdriver Brandix ALX7054 200 Watts",
+    "title": "Drill Screwdriver Brandix ALX7054 200 Watts",
     "brand": "Brandix",
-    "img": "assets/images/products/product-3.jpg",
+    "image": "assets/images/products/product-3.jpg",
     "price": {
       "oldPrice": 850
     },
@@ -31,9 +31,9 @@
   },
   {
     "sku": "el4",
-    "name": "Drill Series 3 Brandix KSR4590PQS 1500 Watts",
+    "title": "Drill Series 3 Brandix KSR4590PQS 1500 Watts",
     "brand": "Brandix",
-    "img": "assets/images/products/product-4.jpg",
+    "image": "assets/images/products/product-4.jpg",
     "price": {
       "oldPrice": 1189,
       "newPrice": 949
@@ -42,9 +42,9 @@
   },
   {
     "sku": "el5",
-    "name": "Wakita Router Power Tool 2017ERXPK",
+    "title": "Wakita Router Power Tool 2017ERXPK",
     "brand": "Wakita",
-    "img": "assets/images/products/product-5.jpg",
+    "image": "assets/images/products/product-5.jpg",
     "price": {
       "oldPrice": 1700
     },
@@ -52,9 +52,9 @@
   },
   {
     "sku": "el6",
-    "name": "Wakita Drilling Machine DM2019KW4 4kW",
+    "title": "Wakita Drilling Machine DM2019KW4 4kW",
     "brand": "Wakita",
-    "img": "assets/images/products/product-6.jpg",
+    "image": "assets/images/products/product-6.jpg",
     "price": {
       "oldPrice": 3199
     },
@@ -62,9 +62,9 @@
   },
   {
     "sku": "el7",
-    "name": "WeVALT Pliers",
+    "title": "WeVALT Pliers",
     "brand": "WeVALT",
-    "img": "assets/images/products/product-7.jpg",
+    "image": "assets/images/products/product-7.jpg",
     "price": {
       "oldPrice": 24
     },
@@ -72,9 +72,9 @@
   },
   {
     "sku": "el8",
-    "name": "Water Hose 40cm",
+    "title": "Water Hose 40cm",
     "brand": "Hammer",
-    "img": "assets/images/products/product-8.jpg",
+    "image": "assets/images/products/product-8.jpg",
     "price": {
       "oldPrice": 15
     },
@@ -82,9 +82,9 @@
   },
   {
     "sku": "el9",
-    "name": "Spanner Wrench",
+    "title": "Spanner Wrench",
     "brand": "Hammer",
-    "img": "assets/images/products/product-9.jpg",
+    "image": "assets/images/products/product-9.jpg",
     "price": {
       "oldPrice": 19
     },
@@ -92,9 +92,9 @@
   },
   {
     "sku": "el10",
-    "name": "Water Tap 10cm",
+    "title": "Water Tap 10cm",
     "brand": "Hammer",
-    "img": "assets/images/products/product-10.jpg",
+    "image": "assets/images/products/product-10.jpg",
     "price": {
       "oldPrice": 15
     },
@@ -102,9 +102,9 @@
   },
   {
     "sku": "el11",
-    "name": "Hand Tool Kit",
+    "title": "Hand Tool Kit",
     "brand": "Hammer",
-    "img": "assets/images/products/product-11.jpg",
+    "image": "assets/images/products/product-11.jpg",
     "price": {
       "oldPrice": 149
     },
@@ -112,9 +112,9 @@
   },
   {
     "sku": "el12",
-    "name": "Ash's Chainsaw 3.5kW",
+    "title": "Ash's Chainsaw 3.5kW",
     "brand": "Mitasia",
-    "img": "assets/images/products/product-12.jpg",
+    "image": "assets/images/products/product-12.jpg",
     "price": {
       "oldPrice": 666.99
     },
@@ -122,9 +122,9 @@
   },
   {
     "sku": "el13",
-    "name": "Mitasia Angle Grinder KZX3890PQW",
+    "title": "Mitasia Angle Grinder KZX3890PQW",
     "brand": "Mitasia",
-    "img": "assets/images/products/product-13.jpg",
+    "image": "assets/images/products/product-13.jpg",
     "price": {
       "oldPrice": 649
     },
@@ -132,9 +132,9 @@
   },
   {
     "sku": "el14",
-    "name": "Brandix Air Compressor DELTAKX500",
+    "title": "Brandix Air Compressor DELTAKX500",
     "brand": "Brandix",
-    "img": "assets/images/products/product-14.jpg",
+    "image": "assets/images/products/product-14.jpg",
     "price": {
       "oldPrice": 1800
     },
@@ -142,9 +142,9 @@
   },
   {
     "sku": "el15",
-    "name": "Hart Drill KL370090G 20v",
+    "title": "Hart Drill KL370090G 20v",
     "brand": "Hart",
-    "img": "assets/images/products/product-15.png",
+    "image": "assets/images/products/product-15.png",
     "price": {
       "oldPrice": 429,
       "newPrice": 229
@@ -153,9 +153,9 @@
   },
   {
     "sku": "el16",
-    "name": "Flex Scvir Patta AX754 150Watts",
+    "title": "Flex Scvir Patta AX754 150Watts",
     "brand": "Patta",
-    "img": "assets/images/products/product-16.png",
+    "image": "assets/images/products/product-16.png",
     "price": {
       "oldPrice": 713
     },
@@ -163,9 +163,9 @@
   },
   {
     "sku": "el17",
-    "name": "Flex Hand RYOBI GSX54 3000Mah",
+    "title": "Flex Hand RYOBI GSX54 3000Mah",
     "brand": "Ryobi",
-    "img": "assets/images/products/product-17.png",
+    "image": "assets/images/products/product-17.png",
     "price": {
       "oldPrice": 1330
     },
@@ -173,9 +173,9 @@
   },
   {
     "sku": "el18",
-    "name": "Сhainsaw Series 1 Ryobi KR490PQ 3000ml",
+    "title": "Сhainsaw Series 1 Ryobi KR490PQ 3000ml",
     "brand": "Ryobi",
-    "img": "assets/images/products/product-18.jpg",
+    "image": "assets/images/products/product-18.jpg",
     "price": {
       "oldPrice": 79
     },
@@ -183,9 +183,9 @@
   },
   {
     "sku": "el19",
-    "name": "Bosch Perforator Power Tool 2020EXPK",
+    "title": "Bosch Perforator Power Tool 2020EXPK",
     "brand": "Bosch",
-    "img": "assets/images/products/product-19.jpg",
+    "image": "assets/images/products/product-19.jpg",
     "price": {
       "oldPrice": 399
     },
@@ -193,9 +193,9 @@
   },
   {
     "sku": "el20",
-    "name": "Ryobi Turbo Screwdriver DM2020KWZ42",
+    "title": "Ryobi Turbo Screwdriver DM2020KWZ42",
     "brand": "Ryobi",
-    "img": "assets/images/products/product-20.png",
+    "image": "assets/images/products/product-20.png",
     "price": {
       "oldPrice": 99
     },
@@ -203,9 +203,9 @@
   },
   {
     "sku": "el21",
-    "name": "WeVALT Pliers Middle",
+    "title": "WeVALT Pliers Middle",
     "brand": "WeVALT",
-    "img": "assets/images/products/product-7.jpg",
+    "image": "assets/images/products/product-7.jpg",
     "price": {
       "oldPrice": 24
     },
@@ -213,9 +213,9 @@
   },
   {
     "sku": "el22",
-    "name": "Water Hose 65cm",
+    "title": "Water Hose 65cm",
     "brand": "Hammer",
-    "img": "assets/images/products/product-8.jpg",
+    "image": "assets/images/products/product-8.jpg",
     "price": {
       "oldPrice": 24
     },
@@ -223,9 +223,9 @@
   },
   {
     "sku": "el23",
-    "name": "Spanner Wrench Hard",
+    "title": "Spanner Wrench Hard",
     "brand": "Hammer",
-    "img": "assets/images/products/product-9.jpg",
+    "image": "assets/images/products/product-9.jpg",
     "price": {
       "oldPrice": 39
     },
@@ -233,9 +233,9 @@
   },
   {
     "sku": "el24",
-    "name": "Water Tap Mini 4сm",
+    "title": "Water Tap Mini 4сm",
     "brand": "Hammer",
-    "img": "assets/images/products/product-10.jpg",
+    "image": "assets/images/products/product-10.jpg",
     "price": {
       "oldPrice": 3
     },
@@ -243,9 +243,9 @@
   },
   {
     "sku": "el25",
-    "name": "Hand Modern Tool Kit XD322",
+    "title": "Hand Modern Tool Kit XD322",
     "brand": "Hammer",
-    "img": "assets/images/products/product-11.jpg",
+    "image": "assets/images/products/product-11.jpg",
     "price": {
       "oldPrice": 139
     },
@@ -253,9 +253,9 @@
   },
   {
     "sku": "el26",
-    "name": "Ash's Chainsaw 3.5kW",
+    "title": "Ash's Chainsaw 3.5kW",
     "brand": "Mitasia",
-    "img": "assets/images/products/product-12.jpg",
+    "image": "assets/images/products/product-12.jpg",
     "price": {
       "oldPrice": 639.99
     },
@@ -263,9 +263,9 @@
   },
   {
     "sku": "el27",
-    "name": "Mitasia Angle Grinder KZX3890PQW",
+    "title": "Mitasia Angle Grinder KZX3890PQW",
     "brand": "Mitasia",
-    "img": "assets/images/products/product-13.jpg",
+    "image": "assets/images/products/product-13.jpg",
     "price": {
       "oldPrice": 221
     },
@@ -273,9 +273,9 @@
   },
   {
     "sku": "el28",
-    "name": "Bosch Coldless Reciprocation Saw CRS1808",
+    "title": "Bosch Coldless Reciprocation Saw CRS1808",
     "brand": "Bosch",
-    "img": "assets/images/products/product-28.jpg",
+    "image": "assets/images/products/product-28.jpg",
     "price": {
       "oldPrice": 1349
     },
@@ -283,9 +283,9 @@
   },
   {
     "sku": "el29",
-    "name": "Hand Kit LDS2344",
+    "title": "Hand Kit LDS2344",
     "brand": "Hammer",
-    "img": "assets/images/products/product-11.jpg",
+    "image": "assets/images/products/product-11.jpg",
     "price": {
       "oldPrice": 421
     },
@@ -293,9 +293,9 @@
   },
   {
     "sku": "el30",
-    "name": "Ash's Chainsaw 3.5kW",
+    "title": "Ash's Chainsaw 3.5kW",
     "brand": "Mitasia",
-    "img": "assets/images/products/product-12.jpg",
+    "image": "assets/images/products/product-12.jpg",
     "price": {
       "oldPrice": 266.99
     },
@@ -303,9 +303,9 @@
   },
   {
     "sku": "el31",
-    "name": "Mitasia Angle Grinder KZX3890PQW",
+    "title": "Mitasia Angle Grinder KZX3890PQW",
     "brand": "Mitasia",
-    "img": "assets/images/products/product-13.jpg",
+    "image": "assets/images/products/product-13.jpg",
     "price": {
       "oldPrice": 865
     },
@@ -313,9 +313,9 @@
   },
   {
     "sku": "el32",
-    "name": "Air Compressor DELTAKX500 10kWt",
+    "title": "Air Compressor DELTAKX500 10kWt",
     "brand": "Brandix",
-    "img": "assets/images/products/product-14.jpg",
+    "image": "assets/images/products/product-14.jpg",
     "price": {
       "oldPrice": 2399
     },

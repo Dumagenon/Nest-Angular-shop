@@ -1,11 +1,14 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ProductPrice } from '../interfaces/product.interface';
+import { Brand } from '../brands/schemas/brands.schema';
 
 export class GetProductsDto {
   @ApiProperty({ required: false })
   order?: string;
   @ApiProperty({ required: false })
-  pageSize?: string;
+  pageSize?: string | number;
+  @ApiProperty({ required: false })
+  page?: string | number;
 }
 
 export class CreateProductDto {
@@ -16,7 +19,7 @@ export class CreateProductDto {
   @ApiProperty()
   img: string;
   @ApiProperty()
-  price: ProductPrice | number;
+  price: ProductPrice;
   @ApiProperty()
   amount: number;
 }
@@ -27,11 +30,11 @@ export class UpdateProductDto {
   @ApiProperty({ required: false })
   name?: string;
   @ApiProperty({ required: false })
-  brand?: string;
+  brand?: Brand;
   @ApiProperty({ required: false })
   img?: string;
   @ApiProperty({ required: false })
-  price?: number | ProductPrice;
+  price?: ProductPrice;
   @ApiProperty({ required: false })
   amount?: number;
 }

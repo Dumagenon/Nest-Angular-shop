@@ -8,7 +8,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 
-import { Product, ProductsResponse } from '../interfaces/product.interface';
+import { ProductsResponse } from '../interfaces/product.interface';
 import { ProductsService } from './products.service';
 
 import {
@@ -17,6 +17,7 @@ import {
   NotFoundResponse,
   UpdateProductDto,
 } from './products.dto';
+import { Product } from './schemas/products.schema';
 
 @ApiTags('products')
 @Controller('api/products')
@@ -35,7 +36,7 @@ export class ProductsController {
     description: 'Not found',
     type: NotFoundResponse,
   })
-  getProducts(@Query() query: GetProductsDto): ProductsResponse {
+  getProducts(@Query() query: GetProductsDto): Promise<ProductsResponse> {
     return this.productsService.getProducts(query);
   }
 
@@ -50,7 +51,7 @@ export class ProductsController {
     description: 'Not found',
     type: NotFoundResponse,
   })
-  getProductBySku(@Param('sku') sku: string): Product {
+  getProductBySku(@Param('sku') sku: string): Promise<Product> {
     return this.productsService.getProductBySku(sku);
   }
 
@@ -65,9 +66,8 @@ export class ProductsController {
     description: 'Not found',
     type: NotFoundResponse,
   })
-  addProduct(@Body() body: CreateProductDto) {
-    this.productsService.addProduct(body);
-    return { message: 'Added' };
+  addProduct(@Body() body: CreateProductDto): Promise<Product> {
+    return this.productsService.addProduct(body);
   }
 
   @Put(':sku')
@@ -81,9 +81,8 @@ export class ProductsController {
     description: 'Not found',
     type: NotFoundResponse,
   })
-  updateProduct(@Param('sku') sku: string, @Body() body: UpdateProductDto) {
-    this.productsService.updateProduct(sku, body);
-    return { message: 'Changed' };
+  updateProduct(@Param('sku') sku: string, @Body() body: UpdateProductDto): Promise<Product> {
+    return this.productsService.updateProduct(sku, body);
   }
 
   @Delete(':sku')
@@ -96,8 +95,7 @@ export class ProductsController {
     description: 'Not found',
     type: NotFoundResponse,
   })
-  deleteProduct(@Param('sku') sku: string) {
-    this.productsService.deleteProduct(sku);
-    return { message: 'Deleted' };
+  deleteProduct(@Param('sku') sku: string): Promise<Product> {
+    return this.productsService.deleteProduct(sku);
   }
 }
