@@ -1,22 +1,9 @@
-import {
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Post,
-  Put,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { NotFoundResponse } from '../products/products.dto';
 import { ProductsResponse } from '../interfaces/product.interface';
+import { ApiErrorResponse } from 'src/utils/constants';
 import { BrandsService } from './brands.service';
 import { Brand } from './schemas/brands.schema';
-
-const ApiErrorResponse = {
-  status: 404,
-  description: 'Not found',
-  type: NotFoundResponse,
-};
 
 @Controller('api/brands')
 export class BrandsController {
@@ -40,7 +27,7 @@ export class BrandsController {
     type: ProductsResponse,
   })
   @ApiResponse(ApiErrorResponse)
-  createBrands(body: Brand): Promise<Brand> {
+  createBrands(@Body() body: Brand): Promise<Brand> {
     return this.brandsService.create(body);
   }
 
@@ -51,7 +38,7 @@ export class BrandsController {
     type: ProductsResponse,
   })
   @ApiResponse(ApiErrorResponse)
-  updateBrands(@Param('id') id: string, body: Brand): Promise<Brand> {
+  updateBrands(@Param('id') id: string, @Body() body: Brand): Promise<Brand> {
     return this.brandsService.update(id, body);
   }
 

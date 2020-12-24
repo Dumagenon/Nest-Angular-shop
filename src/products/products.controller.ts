@@ -81,7 +81,10 @@ export class ProductsController {
     description: 'Not found',
     type: NotFoundResponse,
   })
-  updateProduct(@Param('sku') sku: string, @Body() body: UpdateProductDto): Promise<Product> {
+  updateProduct(
+    @Param('sku') sku: string,
+    @Body() body: UpdateProductDto,
+  ): Promise<Product> {
     return this.productsService.updateProduct(sku, body);
   }
 

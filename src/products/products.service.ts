@@ -21,7 +21,7 @@ export class ProductsService {
   async getProducts(query: GetProductsDto): Promise<ProductsResponse> {
     const prods = await this.productModel.find();
     return {
-      items: await this.transformProduct(prods, query),
+      items: prods,
       total: await this.productModel.countDocuments(),
     };
   }
