@@ -1,12 +1,6 @@
+import { ApiBody, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Body, Controller, Param, Query } from '@nestjs/common';
 import { Delete, Get, Post, Put } from '@nestjs/common';
-import {
-  ApiBody,
-  ApiNotFoundResponse,
-  ApiQuery,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
 
 import { ProductsResponse } from '../interfaces/product.interface';
 import { ProductsService } from './products.service';
@@ -14,10 +8,10 @@ import { ProductsService } from './products.service';
 import {
   CreateProductDto,
   GetProductsDto,
-  NotFoundResponse,
   UpdateProductDto,
 } from './products.dto';
 import { Product } from './schemas/products.schema';
+import { ApiErrorResponse } from '../utils/constants';
 
 @ApiTags('products')
 @Controller('api/products')
@@ -31,11 +25,7 @@ export class ProductsController {
     description: 'Get product by query params',
     type: ProductsResponse,
   })
-  @ApiResponse({
-    status: 404,
-    description: 'Not found',
-    type: NotFoundResponse,
-  })
+  @ApiResponse(ApiErrorResponse)
   getProducts(@Query() query: GetProductsDto): Promise<ProductsResponse> {
     return this.productsService.getProducts(query);
   }
@@ -46,11 +36,7 @@ export class ProductsController {
     description: 'Get product by sku code',
     type: Product,
   })
-  @ApiResponse({
-    status: 404,
-    description: 'Not found',
-    type: NotFoundResponse,
-  })
+  @ApiResponse(ApiErrorResponse)
   getProductBySku(@Param('sku') sku: string): Promise<Product> {
     return this.productsService.getProductBySku(sku);
   }
@@ -61,11 +47,7 @@ export class ProductsController {
     status: 200,
     description: 'Create new product',
   })
-  @ApiResponse({
-    status: 404,
-    description: 'Not found',
-    type: NotFoundResponse,
-  })
+  @ApiResponse(ApiErrorResponse)
   addProduct(@Body() body: CreateProductDto): Promise<Product> {
     return this.productsService.addProduct(body);
   }
@@ -76,11 +58,7 @@ export class ProductsController {
     status: 200,
     description: 'Create new product',
   })
-  @ApiResponse({
-    status: 404,
-    description: 'Not found',
-    type: NotFoundResponse,
-  })
+  @ApiResponse(ApiErrorResponse)
   updateProduct(
     @Param('sku') sku: string,
     @Body() body: UpdateProductDto,
@@ -93,11 +71,7 @@ export class ProductsController {
     status: 200,
     description: 'Delete new product',
   })
-  @ApiResponse({
-    status: 404,
-    description: 'Not found',
-    type: NotFoundResponse,
-  })
+  @ApiResponse(ApiErrorResponse)
   deleteProduct(@Param('sku') sku: string): Promise<Product> {
     return this.productsService.deleteProduct(sku);
   }
