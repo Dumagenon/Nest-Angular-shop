@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Param,
+  Controller,
+  Delete,
+  Post,
+  Get,
+  Put,
+} from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { ProductsResponse } from '../interfaces/product.interface';
 import { ApiErrorResponse } from 'src/utils/constants';
