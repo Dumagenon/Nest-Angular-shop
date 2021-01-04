@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Product } from '../products/schemas/products.schema';
+import { Product } from '../modules/products/entity/product.entity';
 
 export class ProductPrice {
   @ApiProperty()
