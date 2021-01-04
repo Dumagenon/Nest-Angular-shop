@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS brands(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS products(
+    id SERIAL PRIMARY KEY,
+    sku CHAR(8) NOT NULL UNIQUE,
+    title CHAR(45) NOT NULL,
+    price INT NOT NULL,
+    image VARCHAR,
+    brand INT NOT NULL REFERENCES brands(id),
+    amount INT NOT NULL DEFAULT 0
+);
