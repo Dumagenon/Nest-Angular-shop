@@ -8,7 +8,7 @@ import {
   HasMany,
   ForeignKey,
 } from 'sequelize-typescript';
-import { Brand } from 'src/modules/brands/entity/brand.entity';
+import { Brand } from '../../brands/entity/brand.entity';
 import { ProductCategories } from '../../categories/entity/product-categories.entity';
 
 @Table({
@@ -39,11 +39,11 @@ export class Product extends Model<Product> {
   amount: number;
 
   @ForeignKey(() => Brand)
-  @Column({ type: DataType.INTEGER})
-  brand: number;
+  @Column({ type: DataType.INTEGER })
+  brand_id: number;
 
   @BelongsTo(() => Brand)
-  brandName: Brand;
+  brand: Brand;
 
   @HasMany(() => ProductCategories)
   productCategories: ProductCategories;
