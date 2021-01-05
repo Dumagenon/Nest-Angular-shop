@@ -5,3 +5,5 @@ export const ApiErrorResponse = {
   description: 'Not found',
   type: NotFoundResponse,
 };
+
+export const JWT_KEY = 'SomeSecretKey';

@@ -11,6 +11,14 @@ export class CustomersService {
     return this.customerModel.findAll();
   }
 
+  async findOne(login) {
+    return this.customerModel.findOne({ where: { login } });
+  }
+
+  async findOneById(id) {
+    return this.customerModel.findOne({ where: { id } });
+  }
+
   async create(body: CustomerDto): Promise<any> {
     return this.customerModel.create(body);
   }

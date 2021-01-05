@@ -29,6 +29,12 @@ export class Customer extends Model<Customer> {
   @Column({ type: DataType.STRING, unique: true })
   phone: string;
 
+  @Column({ type: DataType.STRING, allowNull: true })
+  password?: string;
+
+  @Column({ type: DataType.STRING })
+  type: string;
+
   @HasMany(() => Order)
   orders: Order[];
 }
