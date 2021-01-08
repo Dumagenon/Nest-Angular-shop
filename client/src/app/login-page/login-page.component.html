@@ -1,0 +1,43 @@
+<section>
+  <div class="container">
+    <div class="auth-block">
+      <form
+        class="card"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="card-content">
+          <span class="card-title">Sign in</span>
+          <div>
+            <div class="input-field">
+              <input
+                id="login"
+                name="login"
+                type="text"
+                placeholder="Username or email address"
+                formControlName="login"
+              >
+            </div>
+            <div class="input-field">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Password"
+                formControlName="password"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="card-action">
+          <button
+            class="dark-btn"
+            [disabled]="form.invalid || form.disabled"
+          >
+            Sign in
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
