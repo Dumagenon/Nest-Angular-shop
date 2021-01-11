@@ -31,43 +31,25 @@ export class AuthService {
   }
 
   public async login(user) {
-    const token = await this.generateToken(user);
+    const token = await this.jwtService.signAsync(user);
     return { user, token };
   }
 
   public async create(user) {
-    // check if user exist
     const isUser = await this.userService.findOne(user.login);
     if (isUser) {
       throw new ConflictException(null, 'User exist');
     }
 
-    // hash the password
-    const pass = await this.hashPassword(user.password);
-
-    // create the user
+    const pass = await bcrypt.hash(user.password, 10);;
     const newUser = await this.userService.create({ ...user, password: pass });
     const { password, ...result } = newUser['dataValues'];
+    const token = await this.jwtService.signAsync(result);
 
-    // generate token
-    const token = await this.generateToken(result);
-
-    // return the user and the token
     return { user: result, token };
   }
 
-  private async generateToken(user) {
-    const token = await this.jwtService.signAsync(user);
-    return token;
-  }
-
-  private async hashPassword(password) {
-    const hash = await bcrypt.hash(password, 10);
-    return hash;
-  }
-
   private async comparePassword(enteredPassword, dbPassword) {
-    const match = await bcrypt.compare(enteredPassword, dbPassword);
-    return match;
+    return await bcrypt.compare(enteredPassword, dbPassword);
   }
 }
