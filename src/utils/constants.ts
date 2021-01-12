@@ -7,3 +7,4 @@ export const ApiErrorResponse = {
 };
 
 export const JWT_KEY = 'SomeSecretKey';
+export const FACEBOOK = 'Facebook';

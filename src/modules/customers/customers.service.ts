@@ -11,12 +11,13 @@ export class CustomersService {
     return this.customerModel.findAll();
   }
 
-  async findOne(login) {
-    return this.customerModel.findOne({ where: { login } });
-  }
-
-  async findOneById(id) {
-    return this.customerModel.findOne({ where: { id } });
+  /**
+   * Find one item from DB where fieldName: value
+   * @param fieldName Column name in database
+   * @param login Column value in database
+   */
+  async findOne(fieldName, login): Promise<any> {
+    return this.customerModel.findOne({ where: { [fieldName]: login } });
   }
 
   async create(body: CustomerDto): Promise<any> {

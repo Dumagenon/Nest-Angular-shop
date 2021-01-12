@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { mustMatch } from '../utils/must-mutch.validator';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import {
+  FacebookLoginProvider,
+  SocialAuthService,
+} from 'angularx-social-login';
 
 @Component({
   selector: 'app-login-page',
@@ -13,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
+    private authFBService: SocialAuthService,
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
@@ -42,4 +46,22 @@ export class LoginPageComponent implements OnInit {
       },
     );
   };
+
+  async signInWithFB() {
+    this.form.disable();
+    const res = await this.authFBService.signIn(
+      FacebookLoginProvider.PROVIDER_ID,
+    );
+    this.auth.facebookAuth({ email: res.email }).subscribe(
+      () => this.router.navigate(['/']),
+      (err) => {
+        alert(err.error.message);
+        this.form.enable();
+      },
+    );
+  }
+
+  async signOut() {
+    await this.authFBService.signOut();
+  }
 }

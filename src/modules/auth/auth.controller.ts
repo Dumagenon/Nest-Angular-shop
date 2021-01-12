@@ -1,4 +1,13 @@
-import { Controller, Body, Post, UseGuards, Request } from '@nestjs/common';
+import {
+  Controller,
+  Body,
+  Post,
+  UseGuards,
+  Request,
+  Get,
+  HttpStatus,
+  Req,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { CustomerDto } from '../customers/dto/customer.dto';
 import { AuthService } from './auth.service';
@@ -16,5 +25,10 @@ export class AuthController {
   @Post('signup')
   async signUp(@Body() user: CustomerDto) {
     return await this.authService.create(user);
+  }
+
+  @Post('facebook')
+  async facebookLogin(@Body() user): Promise<any> {
+    return this.authService.findOrCreate(user);
   }
 }

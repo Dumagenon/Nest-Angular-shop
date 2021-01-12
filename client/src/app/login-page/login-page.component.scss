@@ -1,0 +1,12 @@
+.facebook-btn {
+  width: 200px;
+  outline: none;
+  img {
+    width: 100%;
+  }
+  &:hover {
+    img {
+      opacity: .9;
+    }
+  }
+}

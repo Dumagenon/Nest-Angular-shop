@@ -15,6 +15,11 @@ interface UserSignUp {
   password: string;
 }
 
+interface AuthResponse {
+  user: any;
+  token: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -23,50 +28,53 @@ export class AuthService {
 
   private token = localStorage.getItem('auth-token') || '';
 
-  signup(user: UserSignUp) {
-    return this.http
-      .post<{ user: any; token: string }>('/auth/signup', user)
-      .pipe(
-        tap(({ token }) => {
-          localStorage.setItem('auth-token', token);
-          this.setToken(token);
-        }),
-      );
+  /**
+   * Create new user and get user data and access token
+   * @param user Customer registration data
+   */
+  public signup(user: UserSignUp) {
+    return this.getAuthData('/auth/signup', user);
   }
 
   /**
-   *
-   * @param user
+   * Get user data and access token
+   * @param user Object with username and password
    */
-  login(user: UserLogin): Observable<any> {
-    return this.http
-      .post<{ user: any; token: string }>('/auth/login', {
-        username: user.login,
-        password: user.password,
-      })
-      .pipe(
-        tap(({ token }) => {
-          localStorage.setItem('auth-token', token);
-          this.setToken(token);
-        }),
-      );
+  public login(user: UserLogin): Observable<any> {
+    return this.getAuthData('/auth/login', {
+      username: user.login,
+      password: user.password,
+    });
   }
 
-  setToken(token: string) {
+  public facebookAuth(user: any): Observable<any> {
+    return this.getAuthData('/auth/facebook', user);
+  }
+
+  public setToken(token: string) {
     this.token = token;
   }
 
-  getToken() {
+  public getToken() {
     return this.token;
   }
 
-  isAuth() {
+  public isAuth() {
     return !!this.token;
   }
 
-  logout() {
+  public async logout() {
     this.setToken('');
     localStorage.clear();
-    this.router.navigate(['login']);
+    await this.router.navigate(['login']);
+  }
+
+  private getAuthData(url: string, user: any) {
+    return this.http.post<AuthResponse>(url, user).pipe(
+      tap(({ token }) => {
+        localStorage.setItem('auth-token', token);
+        this.setToken(token);
+      }),
+    );
   }
 }

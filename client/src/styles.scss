@@ -97,8 +97,15 @@ button {
 }
 
 .auth-block {
-  width: 250px;
   padding: 50px 0;
+  display: flex;
+  form {
+    width: 250px;
+  }
+  .social-login {
+    margin-top: 41px;
+    margin-left: 30px;
+  }
   .card-title {
     font-weight: 700;
     color: #333;
@@ -112,6 +119,7 @@ button {
       width: 100%;
       margin-bottom: 8px;
       padding: 4px 4px 3px;
+      box-sizing: border-box;
     }
   }
   .dark-btn {
