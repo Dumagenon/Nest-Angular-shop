@@ -18,7 +18,7 @@ export class CustomersController {
     type: ProductsResponse,
   })
   @ApiResponse(ApiErrorResponse)
-  getBrands(): Promise<Customer[]> {
+  getCustomers(): Promise<Customer[]> {
     return this.usersService.get();
   }
 
@@ -29,7 +29,7 @@ export class CustomersController {
     type: ProductsResponse,
   })
   @ApiResponse(ApiErrorResponse)
-  createBrands(@Body() body: CustomerDto): Promise<Customer> {
+  createCustomer(@Body() body: CustomerDto): Promise<Customer> {
     return this.usersService.create(body);
   }
 
@@ -40,7 +40,7 @@ export class CustomersController {
     type: ProductsResponse,
   })
   @ApiResponse(ApiErrorResponse)
-  deleteBrands(@Param('id') id: string): Promise<Customer> {
+  deleteCustomer(@Param('id') id: string): Promise<Customer> {
     return this.usersService.delete(id);
   }
 }

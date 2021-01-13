@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  SocialLoginModule,
+  FacebookLoginProvider,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +19,8 @@ import { SortsComponent } from './catalog-page/sorts/sorts.component';
 import { reducers } from './reducers';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { TokenInterceptor } from './classes/token.interceptor';
+import HttpInterceptorProvider from './providers/http.interceptor.provider';
+import SocialAuthServiceProvider from './providers/social-auth.provider';
 
 @NgModule({
   declarations: [
@@ -34,10 +40,9 @@ import { TokenInterceptor } from './classes/token.interceptor';
     StoreModule.forRoot(reducers),
     FormsModule,
     ReactiveFormsModule,
+    SocialLoginModule,
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, multi: true, useClass: TokenInterceptor },
-  ],
+  providers: [HttpInterceptorProvider, SocialAuthServiceProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
