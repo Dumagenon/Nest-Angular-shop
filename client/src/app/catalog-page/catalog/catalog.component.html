@@ -11,12 +11,14 @@
           <a href="#" class="shop-area__item-name">
             <span>{{prod.title}}</span>
           </a>
-          <p class="shop-area__item-brand">{{prod.brand}}</p>
+          <p class="shop-area__item-brand">{{prod.brand.name}}</p>
         </div>
       </div>
       <div class="shop-area__buy" >
         <div class="shop-area__cart-area">
-          <ng-container *ngTemplateOutlet="getPriceTemplate(prod.price); context: {prod: prod}" ></ng-container>
+            <span class="shop-area__item-price">
+              $<span >{{(prod.price).toFixed(2)}}</span>
+            </span>
           <button class="shop-area__item-btn">Add to card</button>
         </div>
         <span class="shop-area__availability"
@@ -28,22 +30,3 @@
     </li>
   </ul>
 </div>
-
-<ng-template #cost let-prod="prod">
-  <span class="shop-area__item-price">
-    $<span >{{(prod.price.oldPrice).toFixed(2)}}</span>
-  </span>
-</ng-template>
-
-<ng-template #salePrice let-prod="prod">
-  <div>
-    <span class="old-price">
-      ${{(prod.price.oldPrice).toFixed(2)}}
-    </span>
-    <span class="shop-area__item-price new-price" >
-      <span>
-        ${{(prod.price.newPrice).toFixed(2)}}
-      </span>
-    </span>
-  </div>
-</ng-template>

@@ -15,14 +15,4 @@ import { ProductPrice } from '../../../../../src/interfaces/product.interface';
 })
 export class CatalogComponent {
   @Input() products$: any;
-
-  @ViewChild('salePrice', { static: true })
-  public salePrice: TemplateRef<any>;
-
-  @ViewChild('cost', { static: true })
-  public cost: TemplateRef<any>;
-
-  getPriceTemplate(price: ProductPrice) {
-    return price.newPrice ? this.salePrice : this.cost;
-  }
 }

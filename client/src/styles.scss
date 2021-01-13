@@ -96,6 +96,53 @@ button {
   padding-top: 30px;
 }
 
+.auth-block {
+  padding: 50px 0;
+  display: flex;
+  form {
+    width: 250px;
+  }
+  .social-login {
+    margin-top: 41px;
+    margin-left: 30px;
+  }
+  .card-title {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-size: 24px;
+  }
+  .input-field {
+    position: relative;
+    input {
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 4px 4px 3px;
+      box-sizing: border-box;
+    }
+  }
+  .dark-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 6px 15px 7px;
+    border-radius: 2px;
+    &:disabled {
+      background-color: #f0f0f0;
+      color: #bcbcbc;
+      cursor: default;
+    }
+  }
+  .card-action {
+    padding-top: 12px;
+  }
+  .invalid-feedback {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;

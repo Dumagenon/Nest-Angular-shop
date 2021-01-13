@@ -1,7 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  SocialLoginModule,
+  FacebookLoginProvider,
+  SocialAuthServiceConfig,
+} from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +17,10 @@ import { CartComponent } from './header/cart/cart.component';
 import { CatalogComponent } from './catalog-page/catalog/catalog.component';
 import { SortsComponent } from './catalog-page/sorts/sorts.component';
 import { reducers } from './reducers';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import HttpInterceptorProvider from './providers/http.interceptor.provider';
+import SocialAuthServiceProvider from './providers/social-auth.provider';
 
 @NgModule({
   declarations: [
@@ -20,14 +30,19 @@ import { reducers } from './reducers';
     CartComponent,
     CatalogComponent,
     SortsComponent,
+    SignupPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
+    FormsModule,
+    ReactiveFormsModule,
+    SocialLoginModule,
   ],
-  providers: [],
+  providers: [HttpInterceptorProvider, SocialAuthServiceProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
