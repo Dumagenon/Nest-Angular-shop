@@ -96,6 +96,45 @@ button {
   padding-top: 30px;
 }
 
+.auth-block {
+  width: 250px;
+  padding: 50px 0;
+  .card-title {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+    display: inline-block;
+    font-size: 24px;
+  }
+  .input-field {
+    position: relative;
+    input {
+      width: 100%;
+      margin-bottom: 8px;
+      padding: 4px 4px 3px;
+    }
+  }
+  .dark-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 6px 15px 7px;
+    border-radius: 2px;
+    &:disabled {
+      background-color: #f0f0f0;
+      color: #bcbcbc;
+      cursor: default;
+    }
+  }
+  .card-action {
+    padding-top: 12px;
+  }
+  .invalid-feedback {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;

@@ -6,7 +6,7 @@ import {
   TableOptions,
   HasMany,
 } from 'sequelize-typescript';
-import { Order } from 'src/modules/orders/entity/order.entity';
+import { Order } from '../../orders/entity/order.entity';
 
 @Table({
   tableName: 'customers',
