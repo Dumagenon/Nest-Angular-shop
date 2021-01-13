@@ -21,6 +21,8 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import HttpInterceptorProvider from './providers/http.interceptor.provider';
 import SocialAuthServiceProvider from './providers/social-auth.provider';
+import { SocketIoModule } from 'ngx-socket-io';
+import { env } from './utils/constants';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import SocialAuthServiceProvider from './providers/social-auth.provider';
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
+    SocketIoModule.forRoot({ url: env.HOST, options: {} }),
   ],
   providers: [HttpInterceptorProvider, SocialAuthServiceProvider],
   bootstrap: [AppComponent],
