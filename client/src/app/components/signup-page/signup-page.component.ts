@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { mustMatch } from '../utils/must-mutch.validator';
-import { AuthService } from '../services/auth.service';
+import { mustMatch } from '../../utils/must-mutch.validator';
+import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -29,7 +29,6 @@ export class AppGateway
 
   handleConnection(client: Socket, ...args: any[]) {
     this.users++;
-    // console.log(this.auth.verifyToken(client.handshake.query.token));
     this.server.emit('messages', this.messages);
     this.server.emit('users', this.users);
     this.logger.log(`Client connected: ${client.id}`);

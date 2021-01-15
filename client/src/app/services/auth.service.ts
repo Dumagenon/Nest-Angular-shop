@@ -3,22 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-interface UserLogin {
-  login: string;
-  password?: string;
-}
-
-interface UserSignUp {
-  login: string;
-  email: string;
-  password: string;
-}
-
-interface AuthResponse {
-  user: any;
-  token: string;
-}
+import { AuthResponse, UserLogin, UserSignUp } from '../models/auth.models';
 
 @Injectable({
   providedIn: 'root',
@@ -77,6 +62,10 @@ export class AuthService {
     this.setUser(null);
     localStorage.clear();
     await this.router.navigate(['login']);
+  }
+
+  public verifyAuth(): Observable<any> {
+    return this.http.get('/auth/verify');
   }
 
   private getAuthData(url: string, user: any) {

@@ -31,4 +31,10 @@ export class AuthController {
   async facebookLogin(@Body() user): Promise<any> {
     return this.authService.findOrCreate(user);
   }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('verify')
+  async verifyAuth() {
+    return HttpStatus.OK;
+  }
 }

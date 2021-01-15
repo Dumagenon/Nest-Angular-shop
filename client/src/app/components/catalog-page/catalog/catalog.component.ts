@@ -6,7 +6,7 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { ProductPrice } from '../../../../../src/interfaces/product.interface';
+import { ProductPrice } from '../../../../../../src/interfaces/product.interface';
 
 @Component({
   selector: 'app-catalog',
