@@ -27,6 +27,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   private token = localStorage.getItem('auth-token') || '';
+  private user = JSON.parse(localStorage.getItem('user-data') || 'null');
 
   /**
    * Create new user and get user data and access token
@@ -59,21 +60,32 @@ export class AuthService {
     return this.token;
   }
 
+  public setUser(user: any) {
+    this.user = user;
+  }
+
+  public getUser() {
+    return this.user;
+  }
+
   public isAuth() {
     return !!this.token;
   }
 
   public async logout() {
     this.setToken('');
+    this.setUser(null);
     localStorage.clear();
     await this.router.navigate(['login']);
   }
 
   private getAuthData(url: string, user: any) {
     return this.http.post<AuthResponse>(url, user).pipe(
-      tap(({ token }) => {
+      tap(({ user, token }) => {
         localStorage.setItem('auth-token', token);
+        localStorage.setItem('user-data', JSON.stringify(user));
         this.setToken(token);
+        this.setUser(user);
       }),
     );
   }

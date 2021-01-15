@@ -1,12 +1,13 @@
 import {
   ConflictException,
   Injectable,
+  UnauthorizedException,
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CustomersService } from '../customers/customers.service';
 import * as bcrypt from 'bcrypt';
-import { FACEBOOK } from '../../utils/constants';
+import { FACEBOOK, JWT_KEY } from '../../utils/constants';
 
 @Injectable()
 export class AuthService {
@@ -51,7 +52,7 @@ export class AuthService {
   }
 
   public async findOrCreate(user) {
-    if (!user.email) {
+    if (!user.email || !user) {
       throw new UnprocessableEntityException(null, 'Invalid auth data');
     }
 
@@ -60,6 +61,14 @@ export class AuthService {
     if (customer) return await this.login(customer.toJSON());
 
     return await this.createUser({ ...user, type: FACEBOOK }, null);
+  }
+
+  public verifyToken(token) {
+    const user = this.jwtService.verify(token, { secret: JWT_KEY });
+
+    if (!user) throw new UnauthorizedException(null, 'Access denied');
+
+    return user;
   }
 
   private async createUser(user, pass) {

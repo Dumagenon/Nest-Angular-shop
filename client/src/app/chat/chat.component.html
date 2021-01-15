@@ -1,0 +1,47 @@
+<div class="open-chat-block" *ngIf="!showChat">
+  <button class="open-chat-btn" (click)="toggleChat()">Open chat</button>
+</div>
+<div class="chat" [ngClass]="{'opened': showChat}">
+  <div class="chat__header">
+    <div class="chat__title">Live chat</div>
+    <button class="chat-btn-close" (click)="toggleChat()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 329.26933 329" width="16px"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
+    </button>
+  </div>
+  <div class="chat__area">
+    <div class="chat__info">
+      There are <strong>{{getUsersCount()}}</strong> users online. Start chatting!
+    </div>
+    <div class="chat__content">
+      <ul *ngIf="messages.length > 0; else notMessages" class="chat__messages">
+        <li *ngFor="let msg of messages" [ngClass]="{'own': isOwnMessage(msg)}">
+          <div class="message-sender">{{msg.sender}}</div>
+          <div class="message-content">
+            <div class="message-value">{{msg.value}}</div>
+            <div class="message-time">{{getDate(msg.date)}}</div>
+          </div>
+        </li>
+      </ul>
+      <ng-template #notMessages>
+        <div class="messages-absent">Message list is empty</div>
+      </ng-template>
+      <div class="chat__toolbar">
+        <textarea
+          spellcheck
+          autoComplete
+          autocorrect
+          rows="1"
+          class="chat-input"
+          [(ngModel)]="message.value"
+          placeholder="type message..."
+          (keyup.enter)="addChat()"
+        ></textarea>
+        <button class="sent-chat-button" (click)="addChat()">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 535.5 535.5">
+            <polygon points="0,497.25 535.5,267.75 0,38.25 0,216.75 382.5,267.75 0,318.75   "/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

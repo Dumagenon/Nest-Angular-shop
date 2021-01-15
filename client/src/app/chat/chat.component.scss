@@ -1,0 +1,135 @@
+$chat-indent: 30px;
+
+.open-chat-btn, .chat {
+  position: fixed;
+  bottom: $chat-indent;
+  right: $chat-indent;
+}
+
+.open-chat-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 6px 15px 7px;
+  border-radius: 2px;
+}
+
+.chat {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: all .3s ease-in-out;
+  background-color: #fff;
+  box-shadow: 0 0 10px 3px rgb(95 89 89 / 8%);
+  border-radius: 3px;
+  width: 330px;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  &.opened {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .chat__area {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .chat__toolbar {
+    display: flex;
+    border-top: 1px solid #f2f2f2;
+    .chat-input {
+      width: calc(100% - 20px);
+      padding: 15px 10px 12px 22px;
+      background-color: #fff;
+      font-size: 17px;
+      font-family: Roboto, sans-serif;
+      resize: none;
+      border: none;
+    }
+    .sent-chat-button {
+      padding: 15px 15px 12px;
+      svg {
+        fill: #333;
+      }
+    }
+  }
+  .chat__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+  .chat__header {
+    background: #333;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 3px 3px 0 0;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    .chat-btn-close {
+      cursor: pointer;
+      &:hover {
+        opacity: .7;
+      }
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+  .chat__info {
+    font-size: 14px;
+    margin: 7px;
+    box-shadow: 0 1px 3px 0px rgba(0,0,0,.2);
+    padding: 14px 15px;
+    border-radius: 3px;
+    color: #75757E;
+    text-align: center;
+  }
+  .messages-absent {
+    justify-content: center;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    color: #dadada;
+    font-size: 20px;
+    font-weight: 300;
+  }
+  ul.chat__messages {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: revert;
+    justify-content: flex-end;
+    flex: 1;
+    li {
+      max-width: 100%;
+      width: fit-content;
+      margin: 0 10px 10px;
+      background: #f1f0f0;
+      border-radius: 7px 7px 7px 0 ;
+      padding: 10px 12px;
+      &.own {
+        border-radius: 7px 7px 0 7px;
+        margin-left: auto;
+      }
+      .message-sender {
+        font-size: 11px;
+      }
+      .message-time {
+        color: #75757E;
+        font-size: 12px;
+        display: flex;
+        align-items: flex-end;
+        margin-left: 12px;
+      }
+      .message-content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1px;
+      }
+    }
+  }
+}
+

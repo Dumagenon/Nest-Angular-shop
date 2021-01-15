@@ -18,4 +18,8 @@ export class ChatService {
   getUsers() {
     return this.socket.fromEvent('users');
   }
+
+  getMessages() {
+    return this.socket.fromEvent('messages');
+  }
 }

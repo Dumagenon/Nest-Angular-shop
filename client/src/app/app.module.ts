@@ -1,13 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {
-  SocialLoginModule,
-  FacebookLoginProvider,
-  SocialAuthServiceConfig,
-} from 'angularx-social-login';
+import { SocialLoginModule } from 'angularx-social-login';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,8 +17,9 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import HttpInterceptorProvider from './providers/http.interceptor.provider';
 import SocialAuthServiceProvider from './providers/social-auth.provider';
-import { SocketIoModule } from 'ngx-socket-io';
 import { env } from './utils/constants';
+import { ChatComponent } from './chat/chat.component';
+import { SocketIoModule } from 'ngx-socket-io';
 
 @NgModule({
   declarations: [
@@ -34,6 +31,7 @@ import { env } from './utils/constants';
     SortsComponent,
     SignupPageComponent,
     LoginPageComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +41,10 @@ import { env } from './utils/constants';
     FormsModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    SocketIoModule.forRoot({ url: env.HOST, options: {} }),
+    SocketIoModule.forRoot({
+      url: env.WS_HOST,
+      options: {},
+    }),
   ],
   providers: [HttpInterceptorProvider, SocialAuthServiceProvider],
   bootstrap: [AppComponent],
