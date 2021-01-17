@@ -4,3 +4,7 @@ export const env = {
 };
 
 export const AUTH_TOKEN = 'auth-token';
+export const CHAT_MESSAGE = 'message';
+export const CHAT_USERS = 'users';
+export const CHAT_HISTORY = 'history';
+export const CHAT_CONNECTION = 'connect-user';

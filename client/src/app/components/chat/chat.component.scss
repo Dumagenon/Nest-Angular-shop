@@ -1,5 +1,11 @@
 $chat-indent: 30px;
 
+.open-chat-block {
+  &.clicked {
+    visibility: hidden;
+  }
+}
+
 .open-chat-btn, .chat {
   position: fixed;
   bottom: $chat-indent;
@@ -68,9 +74,11 @@ $chat-indent: 30px;
       font-family: Roboto, sans-serif;
       resize: none;
       border: none;
+      outline: none;
     }
     .sent-chat-button {
       padding: 15px 15px 12px;
+      outline: none;
       svg {
         fill: #333;
       }
@@ -121,7 +129,13 @@ $chat-indent: 30px;
   ul.chat__messages {
     overflow-y: auto;
     overscroll-behavior-y: contain;
+    display: flex;
+    flex-flow: column;
+    flex-grow: 1;
     max-height: 269px;
+    > :first-child {
+      margin-top: auto;
+    }
     li {
       max-width: 75%;
       width: fit-content;

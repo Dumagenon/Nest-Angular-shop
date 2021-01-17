@@ -1,6 +1,6 @@
 <div id="header__cart" class="header__cart">
   <div id="header__cart-button" class="header__cart-button"
-       (click)="clickOnCart()">
+       (click)="clickOnCart()" #toggleButton>
     <button type="button" class="header__cart-area">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
         <circle cx="7" cy="17" r="2"></circle>
@@ -10,7 +10,7 @@
       <span class="header__cart-value">0</span>
     </button>
   </div>
-  <div id="dropcart" class="dropcart" [ngClass]="isOpen ? 'dropcart-open' : ''">
+  <div id="dropcart" class="dropcart" [ngClass]="isOpen ? 'dropcart-open' : ''" #cart>
     <span class="empty-cart">Cart is empty!</span>
 <!--    <ul class="dropcart__products-list">-->
 <!--      ${htmlCatalog}-->

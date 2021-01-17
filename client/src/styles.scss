@@ -167,13 +167,3 @@ button {
     max-width: 1140px;
   }
 }
-
-@media screen and (max-width: 992px) {
-  .header__nav,
-  .site-header__phone {
-    display: none;
-  }
-  .header__gamburger {
-    display: block;
-  }
-}

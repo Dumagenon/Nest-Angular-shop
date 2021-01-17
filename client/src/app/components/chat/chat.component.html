@@ -1,4 +1,4 @@
-<div class="open-chat-block" *ngIf="!showChat">
+<div class="open-chat-block" [ngClass]="{'clicked': showChat}" #toggleButton>
   <button class="open-chat-btn" (click)="toggleChat()">
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" height="25px" width="25px" viewBox="0 0 512 512">
       <path d="M384,0H25.6C10.24,0,0,10.24,0,25.6v256c0,15.36,10.24,25.6,25.6,25.6h25.6v128l128-128H384c15.36,0,25.6-10.24,25.6-25.6    v-256C409.6,10.24,399.36,0,384,0z M102.4,179.2c-15.36,0-25.6-10.24-25.6-25.6c0-15.36,10.24-25.6,25.6-25.6    c15.36,0,25.6,10.24,25.6,25.6C128,168.96,117.76,179.2,102.4,179.2z M204.8,179.2c-15.36,0-25.6-10.24-25.6-25.6    c0-15.36,10.24-25.6,25.6-25.6c15.36,0,25.6,10.24,25.6,25.6C230.4,168.96,220.16,179.2,204.8,179.2z M307.2,179.2    c-15.36,0-25.6-10.24-25.6-25.6c0-15.36,10.24-25.6,25.6-25.6c15.36,0,25.6,10.24,25.6,25.6    C332.8,168.96,322.56,179.2,307.2,179.2z"/>
@@ -6,7 +6,7 @@
     </svg>
   </button>
 </div>
-<div class="chat" [ngClass]="{'opened': showChat}">
+<div class="chat" [ngClass]="{'opened': showChat}" #chat>
   <div class="chat__header">
     <div class="chat__title">Live chat</div>
     <button class="chat-btn-close" (click)="toggleChat()">
@@ -18,7 +18,8 @@
       There are <strong>{{getUsersCount()}}</strong> users online. Start chatting!
     </div>
     <div class="chat__content">
-      <ul *ngIf="messages.length > 0; else notMessages" class="chat__messages">
+      <ul class="chat__messages" #scrollMe>
+        <div *ngIf="messages.length == 0" class="messages-absent">Message list is empty</div>
         <li *ngFor="let msg of messages" [ngClass]="{'own': isOwnMessage(msg)}">
           <div class="message-sender">{{msg.sender}}</div>
           <div class="message-content">
@@ -27,9 +28,6 @@
           </div>
         </li>
       </ul>
-      <ng-template #notMessages>
-        <div class="messages-absent">Message list is empty</div>
-      </ng-template>
       <div class="chat__toolbar">
         <textarea
           spellcheck
