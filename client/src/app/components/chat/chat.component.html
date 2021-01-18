@@ -19,8 +19,16 @@
     </div>
     <div class="chat__content">
       <ul class="chat__messages" #scrollMe>
-        <div *ngIf="messages.length == 0" class="messages-absent">Message list is empty</div>
-        <li *ngFor="let msg of messages" [ngClass]="{'own': isOwnMessage(msg)}">
+        <div
+          *ngIf="messages.length == 0"
+          class="messages-absent"
+        >
+          Message list is empty
+        </div>
+        <li
+          *ngFor="let msg of messages"
+          [ngClass]="{'own': isOwnMessage(msg)}"
+        >
           <div class="message-sender">{{msg.sender}}</div>
           <div class="message-content">
             <div class="message-value">{{msg.value}}</div>
@@ -30,16 +38,15 @@
       </ul>
       <div class="chat__toolbar">
         <textarea
-          spellcheck
-          autoComplete
-          autocorrect
           rows="1"
+          spellcheck
           class="chat-input"
-          [(ngModel)]="message.value"
+          autoComplete="true"
           placeholder="type message..."
-          (keyup.enter)="addChat()"
+          [(ngModel)]="message.value"
+          (keyup.enter)="sendMessage()"
         ></textarea>
-        <button class="sent-chat-button" (click)="addChat()">
+        <button class="sent-chat-button" (click)="sendMessage()">
           <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 535.5 535.5">
             <polygon points="0,497.25 535.5,267.75 0,38.25 0,216.75 382.5,267.75 0,318.75   "/>
           </svg>

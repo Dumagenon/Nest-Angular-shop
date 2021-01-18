@@ -10,32 +10,22 @@ import {
 } from '@nestjs/websockets';
 import { Logger } from '@nestjs/common';
 import { Server, Socket } from 'socket.io';
-import { AuthService } from './modules/auth/auth.service';
 
 @WebSocketGateway(3001)
-export class AppGateway
-  implements OnGatewayConnection, OnGatewayInit, OnGatewayDisconnect {
-  private logger: Logger = new Logger('AppGateway');
-
+export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() private server;
   private connections = 0;
   private messages = [];
   private users = new Set();
 
-  afterInit(server: Server) {
-    this.logger.log('Initialized!');
-  }
-
-  handleConnection(client: Socket, ...args: any[]) {
+  handleConnection(client: any) {
     this.connections++;
     this.server.emit('history', this.messages);
-    this.logger.log(`Client connected: ${client.id}`);
   }
 
   handleDisconnect(client: any) {
     this.connections--;
     this.server.emit('users', Array.from(this.users));
-    this.logger.log(`Client disconnected: ${client.id}`);
   }
 
   @SubscribeMessage('message')
