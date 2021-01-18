@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import {
   FacebookLoginProvider,
@@ -23,6 +23,8 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.auth.isAuth()) this.router.navigate(['/']);
+
     this.form = this.formBuilder.group({
       login: [
         '',
@@ -59,9 +61,5 @@ export class LoginPageComponent implements OnInit {
         this.form.enable();
       },
     );
-  }
-
-  async signOut() {
-    await this.authFBService.signOut();
   }
 }

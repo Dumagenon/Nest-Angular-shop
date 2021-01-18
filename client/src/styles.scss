@@ -1,6 +1,7 @@
 * {
   transition: all .1s ease-in-out;
   outline-color: #333;
+  box-sizing: border-box;
 }
 
 path, svg {
@@ -164,15 +165,5 @@ button {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .header__nav,
-  .site-header__phone {
-    display: none;
-  }
-  .header__gamburger {
-    display: block;
   }
 }

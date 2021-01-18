@@ -7,15 +7,11 @@ import { Socket } from 'ngx-socket-io';
 export class ChatService {
   constructor(private socket: Socket) {}
 
-  sendChat(message: any) {
-    this.socket.emit('chat', message);
+  send(event: string, message: any) {
+    this.socket.emit(event, message);
   }
 
-  receiveChat() {
-    return this.socket.fromEvent('chat');
-  }
-
-  getUsers() {
-    return this.socket.fromEvent('users');
+  receive(event: string) {
+    return this.socket.fromEvent(event);
   }
 }

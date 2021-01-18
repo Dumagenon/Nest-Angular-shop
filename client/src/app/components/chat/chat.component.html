@@ -1,0 +1,50 @@
+<div class="open-chat-block" [ngClass]="{'clicked': showChat}" #toggleButton>
+  <button class="open-chat-btn" (click)="toggleChat()">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" height="25px" width="25px" viewBox="0 0 512 512">
+      <path d="M384,0H25.6C10.24,0,0,10.24,0,25.6v256c0,15.36,10.24,25.6,25.6,25.6h25.6v128l128-128H384c15.36,0,25.6-10.24,25.6-25.6    v-256C409.6,10.24,399.36,0,384,0z M102.4,179.2c-15.36,0-25.6-10.24-25.6-25.6c0-15.36,10.24-25.6,25.6-25.6    c15.36,0,25.6,10.24,25.6,25.6C128,168.96,117.76,179.2,102.4,179.2z M204.8,179.2c-15.36,0-25.6-10.24-25.6-25.6    c0-15.36,10.24-25.6,25.6-25.6c15.36,0,25.6,10.24,25.6,25.6C230.4,168.96,220.16,179.2,204.8,179.2z M307.2,179.2    c-15.36,0-25.6-10.24-25.6-25.6c0-15.36,10.24-25.6,25.6-25.6c15.36,0,25.6,10.24,25.6,25.6    C332.8,168.96,322.56,179.2,307.2,179.2z"/>
+      <path d="M486.4,230.4h-25.6v102.4c0,15.36-10.24,25.6-25.6,25.6H204.8v51.2c0,15.36,10.24,25.6,25.6,25.6h128L460.8,512v-76.8    h25.6c12.8,0,25.6-10.24,25.6-25.6V256C512,243.2,499.2,230.4,486.4,230.4z"/>
+    </svg>
+  </button>
+</div>
+<div class="chat" [ngClass]="{'opened': showChat}" #chat>
+  <div class="chat__header">
+    <div class="chat__title">Live chat</div>
+    <button class="chat-btn-close" (click)="toggleChat()">
+      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 329.26933 329" width="16px"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
+    </button>
+  </div>
+  <div class="chat__area">
+    <div class="chat__info">
+      There are <strong>{{getUsersCount()}}</strong> users online. Start chatting!
+    </div>
+    <div class="chat__content">
+      <ul class="chat__messages" #scrollMe>
+        <div *ngIf="messages.length == 0" class="messages-absent">Message list is empty</div>
+        <li *ngFor="let msg of messages" [ngClass]="{'own': isOwnMessage(msg)}">
+          <div class="message-sender">{{msg.sender}}</div>
+          <div class="message-content">
+            <div class="message-value">{{msg.value}}</div>
+            <div class="message-time">{{getDate(msg.date)}}</div>
+          </div>
+        </li>
+      </ul>
+      <div class="chat__toolbar">
+        <textarea
+          spellcheck
+          autoComplete
+          autocorrect
+          rows="1"
+          class="chat-input"
+          [(ngModel)]="message.value"
+          placeholder="type message..."
+          (keyup.enter)="addChat()"
+        ></textarea>
+        <button class="sent-chat-button" (click)="addChat()">
+          <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 535.5 535.5">
+            <polygon points="0,497.25 535.5,267.75 0,38.25 0,216.75 382.5,267.75 0,318.75   "/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

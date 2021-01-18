@@ -1,5 +1,4 @@
 import {
-  WsResponse,
   MessageBody,
   WebSocketGateway,
   SubscribeMessage,
@@ -11,36 +10,47 @@ import {
 } from '@nestjs/websockets';
 import { Logger } from '@nestjs/common';
 import { Server, Socket } from 'socket.io';
+import { AuthService } from './modules/auth/auth.service';
 
-@WebSocketGateway()
+@WebSocketGateway(3001)
 export class AppGateway
   implements OnGatewayConnection, OnGatewayInit, OnGatewayDisconnect {
   private logger: Logger = new Logger('AppGateway');
 
-  @WebSocketServer() server;
-  users = 0;
+  @WebSocketServer() private server;
+  private connections = 0;
+  private messages = [];
+  private users = new Set();
 
   afterInit(server: Server) {
     this.logger.log('Initialized!');
   }
 
-  handleConnection(client: any, ...args: any[]) {
-    this.users++;
-    this.server.emit('users', this.users);
+  handleConnection(client: Socket, ...args: any[]) {
+    this.connections++;
+    this.server.emit('history', this.messages);
     this.logger.log(`Client connected: ${client.id}`);
   }
 
   handleDisconnect(client: any) {
-    this.users--;
-    this.server.emit('users', this.users);
+    this.connections--;
+    this.server.emit('users', Array.from(this.users));
     this.logger.log(`Client disconnected: ${client.id}`);
   }
 
-  @SubscribeMessage('chat')
+  @SubscribeMessage('message')
   handleEvent(
     @MessageBody() data: string,
     @ConnectedSocket() client: Socket,
   ): void {
-    client.broadcast.emit('chat', data);
+    this.messages.push(data);
+    client.broadcast.emit('message', data);
+  }
+
+  @SubscribeMessage('connect-user')
+  setUserConnection(@MessageBody() data: string): void {
+    this.users.add(data);
+    console.log(Array.from(this.users));
+    this.server.emit('users', Array.from(this.users));
   }
 }

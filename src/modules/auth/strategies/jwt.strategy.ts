@@ -5,7 +5,7 @@ import { CustomersService } from '../../customers/customers.service';
 import { JWT_KEY } from '../../../utils/constants';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   constructor(private readonly userService: CustomersService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -15,7 +15,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: any) {
-    // check if user in the token actually exist
+    console.log('Payload:', payload);
     const user = await this.userService.findOne('id', payload.id);
     if (!user) {
       throw new UnauthorizedException(

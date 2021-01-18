@@ -1,7 +1,8 @@
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  CanActivateChild, Router,
+  CanActivateChild,
+  Router,
   RouterStateSnapshot,
 } from '@angular/router';
 import { Injectable } from '@angular/core';
