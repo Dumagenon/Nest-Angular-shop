@@ -8,6 +8,7 @@ import { CustomersModule } from './modules/customers/customers.module';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { DatabaseModule } from './modules/database/database.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
@@ -20,6 +21,6 @@ import { AuthModule } from './modules/auth/auth.module';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppGateway],
 })
 export class AppModule {}
