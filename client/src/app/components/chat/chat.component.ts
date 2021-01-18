@@ -7,15 +7,15 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ChatService } from '../../services/chat.service';
-import { AuthService } from '../../services/auth.service';
-import Message from '../../models/message.interface';
 import {
   CHAT_CONNECTION,
   CHAT_HISTORY,
   CHAT_MESSAGE,
   CHAT_USERS,
 } from '../../utils/constants';
+import { ChatService } from '../../services/chat.service';
+import { AuthService } from '../../services/auth.service';
+import Message from '../../models/message.interface';
 
 @Component({
   selector: 'app-chat',
@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, AfterViewInit {
   constructor(private chatService: ChatService, private auth: AuthService) {}
 
   public users = [];
-  public message = { value: '', sender: '', date: null };
+  public message = { value: '', sender: '', date: 0 };
   public messages: Message[] = [];
   public showChat = false;
 
@@ -71,20 +71,18 @@ export class ChatComponent implements OnInit, AfterViewChecked, AfterViewInit {
     this.scrollToBottom();
   }
 
-  addChat() {
+  sendMessage() {
     const value = this.message.value.trim();
-
     if (value !== '') {
       const msg: any = {
         value,
-        date: new Date().getTime(),
+        date: Date.now(),
         sender: this.message.sender,
       };
       this.messages.push(msg);
       this.chatService.send(CHAT_MESSAGE, msg);
-      console.log(this.messages);
       this.message.value = '';
-      this.message.date = null;
+      this.message.date = 0;
     }
   }
 
