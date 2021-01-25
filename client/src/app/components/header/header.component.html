@@ -7,7 +7,7 @@
         </svg>
       </a>
     </div>
-    <div id="site-header__search" class="site-header__search">
+    <div id="site-header__search" class="site-header__search" *ngIf="auth.isAuth()">
       <div class="search__form">
         <input
           name="search"
@@ -60,7 +60,7 @@
           </li>
         </ul>
       </nav>
-      <app-cart></app-cart>
+      <app-cart *ngIf="auth.isAuth()"></app-cart>
     </div>
   </div>
 </header>

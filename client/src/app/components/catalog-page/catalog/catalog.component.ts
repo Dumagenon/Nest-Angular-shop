@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  TemplateRef,
-  ViewChild,
-} from '@angular/core';
-import { ProductPrice } from '../../../../../../src/interfaces/product.interface';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-catalog',

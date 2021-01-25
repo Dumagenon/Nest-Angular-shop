@@ -1,7 +1,7 @@
 import { ChatComponent } from './chat.component';
 import { ChatService } from '../../services/chat.service';
 import { AuthService } from '../../services/auth.service';
-import { BehaviorSubject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { CHAT_CONNECTION } from '../../utils/constants';
 
 describe('ChatComponent', () => {

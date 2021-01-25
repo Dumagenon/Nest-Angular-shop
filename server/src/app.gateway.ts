@@ -40,7 +40,7 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @SubscribeMessage('connect-user')
   setUserConnection(@MessageBody() data: string): void {
     this.users.add(data);
-    console.log(Array.from(this.users));
+    console.log(this.users);
     this.server.emit('users', Array.from(this.users));
   }
 }

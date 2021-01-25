@@ -1,0 +1,28 @@
+version: '3'
+services:
+  frontend:
+    build: ./client
+    ports:
+      - "4200:4000"
+    container_name: frontend-docker
+    restart: always
+    links:
+      - backend
+  backend:
+    build: ./server
+    ports:
+      - "3000:3000"
+    container_name: backend-docker
+    restart: always
+    links:
+      - db
+  db:
+    image: postgres:13-alpine
+    ports:
+      - "5432:5432"
+    container_name: database-docker
+    restart: always
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'Zxasqw12'
+      POSTGRES_DB: 'powertoolsstore'
