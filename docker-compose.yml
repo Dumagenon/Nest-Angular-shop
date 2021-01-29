@@ -1,20 +1,31 @@
-version: '3'
+version: '3.8'
 services:
   frontend:
     build: ./client
     ports:
-      - "4200:4000"
+      - "4200:4200"
     container_name: frontend-docker
     restart: always
-    links:
+    volumes:
+      - "./client:/app/frontend"
+    networks:
+      - app-network
+    depends_on:
       - backend
   backend:
     build: ./server
     ports:
       - "3000:3000"
+      - "9229:9229"
     container_name: backend-docker
     restart: always
-    links:
+    volumes:
+      - "./server:/app/backend"
+    env_file:
+      - "./server/.env"
+    networks:
+      - app-network
+    depends_on:
       - db
   db:
     image: postgres:13-alpine
@@ -26,3 +37,8 @@ services:
       POSTGRES_USER: 'postgres'
       POSTGRES_PASSWORD: 'Zxasqw12'
       POSTGRES_DB: 'powertoolsstore'
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

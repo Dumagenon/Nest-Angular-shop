@@ -13,7 +13,7 @@ import { OrderDetails } from '../orders/entity/order-details.entity';
   imports: [
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'localhost',
+      host: 'db',
       port: 5432,
       username: 'postgres',
       password: 'Zxasqw12',

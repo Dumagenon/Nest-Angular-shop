@@ -6,7 +6,6 @@ import {
   Request,
   Get,
   HttpStatus,
-  Req,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { CustomerDto } from '../customers/dto/customer.dto';

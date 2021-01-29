@@ -3,15 +3,13 @@ import {
   WebSocketGateway,
   SubscribeMessage,
   OnGatewayConnection,
-  OnGatewayInit,
   OnGatewayDisconnect,
   WebSocketServer,
   ConnectedSocket,
 } from '@nestjs/websockets';
-import { Logger } from '@nestjs/common';
-import { Server, Socket } from 'socket.io';
+import { Socket } from 'socket.io';
 
-@WebSocketGateway(3001)
+@WebSocketGateway()
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() private server;
   private connections = 0;
@@ -40,7 +38,6 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @SubscribeMessage('connect-user')
   setUserConnection(@MessageBody() data: string): void {
     this.users.add(data);
-    console.log(this.users);
     this.server.emit('users', Array.from(this.users));
   }
 }

@@ -1,5 +1,4 @@
 import {
-  ConflictException,
   Injectable,
   UnauthorizedException,
   UnprocessableEntityException,
@@ -17,7 +16,7 @@ export class AuthService {
   ) {}
 
   /**
-   * Checked if user exist, and create new if is not.
+   * Check if user exist, return null if is not.
    * @param username
    * @param pass
    */
@@ -40,11 +39,7 @@ export class AuthService {
   }
 
   public async create(user) {
-    const isUser = await this.userService.findOne('login', user.login);
-
-    if (isUser) {
-      throw new ConflictException(null, 'User exist');
-    }
+    await this.userService.isUserExist(user);
 
     const pass = await bcrypt.hash(user.password, 10);
 

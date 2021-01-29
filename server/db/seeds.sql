@@ -47,9 +47,6 @@ VALUES (2, 1);
 INSERT INTO product_categories (product_id, category_id)
 VALUES (3, 1);
 
-INSERT INTO customers (login, email, phone)
-VALUES ('dumagenon', 'v@mail.ru', '+380668085195');
-
 BEGIN;
 INSERT INTO order_info (amount, order_date)
 VALUES (2537, now());

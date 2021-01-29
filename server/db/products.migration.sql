@@ -9,6 +9,6 @@ CREATE TABLE IF NOT EXISTS products(
     title CHAR(45) NOT NULL,
     price INT NOT NULL,
     image VARCHAR,
-    brand INT NOT NULL REFERENCES brands(id),
+    brand_id INT NOT NULL REFERENCES brands(id),
     amount INT NOT NULL DEFAULT 0
 );

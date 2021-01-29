@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ConflictException } from '@nestjs/common';
 import { Customer } from './entity/customer.entity';
 import { CustomerDto } from './dto/customer.dto';
 import { InjectModel } from '@nestjs/sequelize';
@@ -30,5 +30,16 @@ export class CustomersService {
 
   async delete(id): Promise<any> {
     return this.customerModel.destroy({ where: { id } });
+  }
+
+  public async isUserExist(user) {
+    const userByEmail = await this.findOne('email', user.email);
+    const userByLogin = user.login
+      ? await this.findOne('login', user.login)
+      : null;
+
+    if (userByEmail || userByLogin) {
+      throw new ConflictException(null, 'User exist');
+    }
   }
 }
